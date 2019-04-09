@@ -1,6 +1,6 @@
 /* events
 版本: 1.0.0.0
-2019/4/7
+2019/4/9
 */
 
 /* Timed Events */
@@ -42,9 +42,34 @@ function button1_Clicked(){
   }
   s = calculate();
   label7.html(s);
-  console.log('convert');
+
+  h = Math.floor((hour+3)/2);
+  s = "農曆: " + apparentYear() + "年" + apparentMonth() + "月" + Math.round(lunarDay()) + "日" + Zhi[h%12];
+  if(hour%2 == 1){
+    s += "初";
+  }else{
+    s += "正";
+  }
+  if(min < 15){
+    s += "初";
+  }else{
+    s += Math.floor(min/15);
+  }
+  s += "刻" + (min%15) + "分";
+  p1.html(s);
 }
 
 function button2_Clicked(){
-
+  var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var y = today.getFullYear();
+    var mo = today.getMonth() + 1;
+    var d = today.getDate();
+    textBox1.value(y);
+    textBox2.value(mo);
+    textBox3.value(d);
+    textBox4.value(h);
+    textBox5.value(m);
 }

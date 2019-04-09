@@ -36,6 +36,7 @@ var textBox5; // 分 (textarea)
 var button1; // 轉換 (button)
 var button2; // Now (button)
 var label7; // Output (label)
+var p1; // Output (p)
 
 var Gan = "癸甲乙丙丁戊己庚辛壬"; // 天干 (string)
 var Zhi = "亥子丑寅卯辰巳午未申酉戌"; // 地支 (string)
@@ -67,6 +68,7 @@ function setup(){
   createP('');
   label7 = createElement('label', '請輸入日期，然後按「轉換」。');
   label7.parent(document.body);
+  p1 = createP('');
 }
 
 function draw(){
@@ -105,7 +107,7 @@ function calculate(){ // (string)
 }
 
 function apparentMonth(){
-  var Jie = [0, 5, 4, 5, 5, 5, 5, 7, 8, 7, 8, 7, 7];
+  var Jie = [0, 5, 4, 5, 5, 5, 5, 7, 8, 7, 8, 7, 7]; // 節
   if(Jie[month] > day){
     m = month - 2;
   }else{
