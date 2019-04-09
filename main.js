@@ -5,7 +5,7 @@
 聯絡方式
   Facebook連結: https://www.facebook.com/bruce.chen.372
   LINE ID: brucechen0
-最後修改日期: 2019/4/7
+最後修改日期: 2019/4/9
 版本: 1.0.0.0
 發表於: https://brucechen034020.github.io/
 程式碼尺度
@@ -74,10 +74,10 @@ function draw(){
 }
 
 function calculate(){ // (string)
-  y = (year+57) % 60;
+  y = (apparentYear()+57) % 60;
   console.log(y);
   NianZhu = Gan[y%10] + Zhi[y%12]; // 年柱
-  m = month + ((y+4)%5)*12 + 2;
+  m = apparentMonth() + ((y+4)%5)*12 + 2;
   YueZhu = Gan[m%10] + Zhi[m%12]; // 月柱
   output = "生辰八字: " + NianZhu + YueZhu;
   var i = 0;
@@ -102,4 +102,25 @@ function calculate(){ // (string)
   ShiZhu = Gan[h2%10] + Zhi[h%12]; // 時柱
   output += ShiZhu;
   return output;
+}
+
+function apparentMonth(){
+  var Jie = [0, 5, 4, 5, 5, 5, 5, 7, 8, 7, 8, 7, 7];
+  if(Jie[month] > day){
+    m = month - 2;
+  }else{
+    m = month - 1;
+  }
+  if(m <= 0){
+    m += 12;
+  }
+  return m;
+}
+
+function apparentYear(){
+  if (apparentMonth() == 12 || month == 1){
+    return year - 1;
+  }else{
+    return year;
+  }
 }
